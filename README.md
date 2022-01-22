@@ -10,7 +10,7 @@ That’s weird and completely unacceptable, so I needed to figure out how to syn
 
 ![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/10.png)
 
-However, the problem hasn't gone annywhere.
+However, the problem hasn't gone anywhere.
 
 After several hours of trying to change syncing groups and roles, I found this post on Unreal forums: https://forums.unrealengine.com/t/unexpected-sync-groups-behavior/245783, which not only highlights the problem I have faced, but also proves that the feature is broken and has unexpected behavior.
 At that point, I had to find an alternative solution. And I found one.
