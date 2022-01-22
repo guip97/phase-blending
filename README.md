@@ -2,13 +2,13 @@
 ## Intro
 Several months ago, when I was checking up assets on the Unreal Marketplace, I noticed Kubold’s animation pack on 50% (!) sale, a good deal indeed. Once I got the asset, I started setting up a fairly simple animation blueprint, and it all was quite simple until I faced stop animations. The problem is, that it's not sufficient just to play stop animation after walk cycle, as a "double step issue" will occur:
 
-![double-step-issue](https://github.com/guip97/files/blob/acc2056a9eb3e13e6e0401e2e4456aff817a3d3a/phase-blending/before.gif)
+![double-step-issue](https://github.com/guip97/files/blob/acc2056a9eb3e13e6e0401e2e4456aff817a3d3a/phase-blending/before.gif?token=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)
 
 That’s weird and completely unacceptable, so I needed to figure out how to synchronize stop animations with the walking cycle. I thought about some kind of special points or events, which would transfer the data of the walking animation to the stop one during the transition. Unreal Engine has a "feature" called sync groups, which, in theory, would solve my problem in just about 1 minute. This is how it works: you put sync markers at frames where poses are almost the same (e.g. when the character touches the ground), the engine will do the rest – seamless transition between sequences. 
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/9.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/9.png?token=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)
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/10.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/10.png?token=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)
 
 However, the problem hasn't gone anywhere.
 
@@ -19,29 +19,29 @@ At that point, I had to find an alternative solution. And I found one.
 
 Here’s what I came up with: walking animation has a curve, which represents the time when we want to play our stop animation at; when it’s time to stop, we get a value from that curve, and then simply play stop animation. Sounds pretty simple, but the implementation is, however, not that straightforward. 
 
-![image](https://raw.githubusercontent.com/guip97/files/main/phase-blending/1.png?raw=true)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/1.png?token=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)
 
 Alright, but how to create such curve? Where do we get those magic values? Here’s what we need to do: 
 
 - Choose a pose in the walking animation
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/2.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/2.png?token=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)
 
 - Open up stop animation and search for a similar pose
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/3.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/3.png?token=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)
 
 - Copy the playback position
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/4.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/4.png?token=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)
 
 - Go back to the walking animation and paste that value
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/5.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/5.png?token=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)
 
 - Adjust stopping animation respectively
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/6.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/6.png?token=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)
 
 It’s better to find as much similar poses as possible to achieve high accuracy during transition. 
 
@@ -49,16 +49,16 @@ It’s better to find as much similar poses as possible to achieve high accuracy
 
 In some cases, difference between similar poses can be quite big, here’s an example:
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/7.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/7.png?token=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)
 
 Or there’s a huge number of frames in walking animation, for which we just can’t find similar poses in the stop anim. How would we handle such cases? Here’s where **“dead”** zones come in. The idea is that walking animation has a notify state (just a preference, you can also use animation notifies), which has 2 zones: normal (where we can start stop animation) and dead (when we are in such state, walking animation will continue playing until it reaches the nice zone). Obviously, root motion should be **turned on**, otherwise foot sliding is expected.
 
-![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/8.png)
+![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/8.png?token=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)
 
 But why are there RightStop and LeftStop? That’s because Kubold’s animation pack provides 2 types of stopping animations: when right foot is up and when the left one is up. 
 And here’s a final result:
 
-![gif](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/after.gif)
+![gif](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/after.gif?token=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)
 
 ## Limitations
 
