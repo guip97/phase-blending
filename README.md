@@ -19,7 +19,7 @@ At that point, I had to find an alternative solution. And I found one.
 
 Here’s what I came up with: walking animation has a curve, which represents the time when we want to play our stop animation at; when it’s time to stop, we get a value from that curve, and then simply play stop animation. Sounds pretty simple, but the implementation is, however, not that straightforward. 
 
-![image](https://github.com/guip97/files/blob/main/phase-blending/1.png)
+![image](https://raw.githubusercontent.com/guip97/files/main/phase-blending/1.png?raw=true)
 
 Alright, but how to create such curve? Where do we get those magic values? Here’s what we need to do: 
 
