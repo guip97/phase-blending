@@ -70,7 +70,7 @@ Even though everything is working nicely, this approach is too far from perfect,
 
 ## Alternatives
 
-A perfect solution, would be a fully procedural solver, which would create stopping animation in a runtime, with the help of dynamic animation retargeting, IK and Unreal’s feature called “virtual bones”.
+A perfect solution would be a fully procedural system, which would create stopping animation in a runtime, with the help of dynamic animation retargeting, IK and Unreal’s feature called “virtual bones”.
 
 ## Final thoughts
 
