@@ -2,7 +2,7 @@
 ## Intro
 Several months ago, when I was checking up assets on the Unreal Marketplace, I noticed Kubold’s animation pack on 50% (!) sale, a good deal indeed. Once I got the asset, I started setting up a fairly simple animation blueprint, and it all was quite simple until I faced stop animations. The problem is, that it's not sufficient just to play stop animation after walk cycle, as a "double step issue" will occur:
 
-![double-step-issue](https://i.imgur.com/r2J2Kvi.gif)
+![double-step-issue](https://i.imgur.com/4HoT3l1.gif)
 
 That’s weird and completely unacceptable, so I needed to figure out how to synchronize stop animations with the walking cycle. I thought about some kind of special points or events, which would transfer the data of the walking animation to the stop one during the transition. Unreal Engine has a "feature" called sync groups, which, in theory, would solve my problem in just about 1 minute. This is how it works: you put sync markers at frames where poses are almost the same (e.g. when the character touches the ground), the engine will do the rest – seamless transition between sequences. 
 
