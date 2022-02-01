@@ -1,6 +1,6 @@
 # Phase blending technique
 ## Intro
-Several months ago, when I was checking up assets on the Unreal Marketplace, I noticed Kubold’s animation pack on 50% (!) sale, a good deal indeed. Once I got the asset, I started setting up a fairly simple animation blueprint, and it all was quite simple until I faced stop animations. The problem is, that it's not sufficient just to play stop animation after walk cycle, as a "double step issue" will occur:
+Several months ago, when I was checking out assets on the Unreal Marketplace, I noticed Kubold’s animation pack on 50% (!) sale, a good deal indeed. Once I got the asset, I started setting up a fairly simple animation blueprint, and it all was quite simple until I faced stop animations. The problem is, that it's not sufficient just to play stop animation after walk cycle, as a "double step issue" will occur:
 
 ![double-step-issue](https://i.imgur.com/4HoT3l1.gif)
 
@@ -43,7 +43,7 @@ Alright, but how to create such curve? Where do we get those magic values? Here�
 
 ![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/6.png?token=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)
 
-It’s better to find as much similar poses as possible to achieve high accuracy during transition. 
+It’s better to find poses as similar as possible to achieve high accuracy during transition. 
 
 ## Dead zones
 
