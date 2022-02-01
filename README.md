@@ -56,9 +56,10 @@ Or there’s a huge number of frames in walking animation, for which we just can
 ![image](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/8.png?token=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)
 
 But why are there RightStop and LeftStop? That’s because Kubold’s animation pack provides 2 types of stopping animations: when right foot is up and when the left one is up. 
-And here’s a final result:
 
-![gif](https://github.com/guip97/files/blob/0a1a9759fe8b03157554fdfbc95a57a8e60aeda5/phase-blending/after.gif?token=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)
+**And here’s a final result:**
+
+![Final result: no double step issue](https://i.imgur.com/16pqPXT.gif)
 
 ## Limitations
 
